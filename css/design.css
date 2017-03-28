@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700');
+
+* {
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    min-width: 500px;
+    min-height: 600px;
+    background: url(../media/f2.jpg);
+    background-size: cover;
+}
+
+.buttonArea {
+    position: absolute;
+    bottom: 20px;
+    top: auto;
+    left: calc(50% - 130px);
+    width: 260px;
+    height: 100px;
+    float: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.buttonArea > button {
+    transition: .4s all;
+}
+
+button {
+    cursor: pointer;
+}
+
+.buttonArea > button:active {
+    transform: scale(.9);
+}
+
+#takePic {
+    background: rgba(255,255,255,0.20);
+    border: 6px solid #FFFFFF;
+    box-shadow: 0 0 8px 0 rgba(0,0,0,0.30);
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    -webkit-backdrop-filter:blur(6px);
+}
+
+.sideButton {
+    background: none;
+    -webkit-appearance: none;
+    border: none;
+}
+
+.sideButton>img {
+    height: 70px;
+    width: auto;
+}
