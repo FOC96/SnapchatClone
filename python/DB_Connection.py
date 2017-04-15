@@ -1,5 +1,9 @@
+# DB connection
 import pymysql
+# To get the device's IP address
 import socket
+# Password encryption
+from passlib.hash import pbkdf2_sha256
 
 
 class snapDB:
@@ -17,7 +21,7 @@ class snapDB:
         return conn
 
 
-    # Gets the device's IP Address
+    # Gets the device's IP Address --> ipAddress
     def getIPadress(self):
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         s.connect(('192.0.0.8', 1027))
@@ -31,39 +35,53 @@ class snapDB:
         conn = self.getConnection()
         cur = conn.cursor()
 
+        # Password encrypted
+        password = pbkdf2_sha256.hash(password)
+
+        # INSERT command
         cur.execute("INSERT INTO user(userNickname, userName, userPassword, userIPAddress) VALUES('"+nickName+"', '"+name+"', '"+password+"', '"+self.getIPadress()+"');")
 
         # Changes are saved through 'commit()'
         conn.commit()
+
+        # Closing cursor and connection
         cur.close()
         conn.close()
 
 
-    # DEFS YET TO BE UPDATED!!
-
-    def getAllArtists(self):
+    # Checks if the userNickname and Password are correct --> userID/void
+    def checkLogin(self, nickname, password):
         conn = self.getConnection()
         cur = conn.cursor()
-        cur.execute("SELECT * FROM artist ORDER BY artistID")
-        for row in cur:
-            print(row)
 
+        cur.execute("SELECT * FROM user;")
+
+        session = False
+        name = ""
+        userID = 0
+
+        for element in cur:
+            check = pbkdf2_sha256.verify(password, element[3])
+
+            if check == True and element[1] == nickname:
+                session = True
+                name = element[2]
+                userID = element[0]
+                break
         cur.close()
         conn.close()
 
+        if session == True:
+            print("Sesión iniciada con éxito,", name)
+            return userID
+        else:
+            print("Error en los campos")
 
 
-    def getAllSongs(self):
-        conn = self.getConnection()
-        cur = conn.cursor()
-        cur.execute("SELECT song.songID, song.songName, artist.artistName, album.albumTitle, genre.genreName FROM album, artist, genre, song WHERE song.songArtist = artist.artistID AND song.songAlbum = album.albumID AND song.songGenre = genre.genreID ORDER BY song.songID;")
 
-        for row in cur:
-            print(row)
-
-        cur.close()
-        conn.close()
 
 
 a = snapDB()
-a.addUser("loco12", "Juan Gabriel", "contra123")
+#a.addUser("john1", "Juan", "passOn")
+user = a.checkLogin("john1", password="passOn")
+print(user)
