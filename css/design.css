@@ -22,7 +22,7 @@ body {
     height: 100px;
     float: left;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 }
 
