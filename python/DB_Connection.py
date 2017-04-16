@@ -5,8 +5,10 @@ import socket
 # Password encryption
 from passlib.hash import pbkdf2_sha256
 
+import time
 
-class snapDB:
+
+class SnapDB:
     # Get conection with database -> connection
     def getConnection(self):
         # Database Variables
@@ -61,6 +63,7 @@ class snapDB:
         userID = 0
 
         for element in cur:
+            # Verifies the given password and the encrypted one
             check = pbkdf2_sha256.verify(password, element[3])
 
             if check == True and element[1] == nickname:
@@ -73,15 +76,90 @@ class snapDB:
 
         if session == True:
             print("Sesión iniciada con éxito,", name)
+            self.updateIP(userID)
             return userID
         else:
             print("Error en los campos")
 
 
+    # Updates the user's IP Address in the DB
+    def updateIP(self, userID):
+        conn = self.getConnection()
+        cur = conn.cursor()
+
+        cur.execute("UPDATE user SET userIPAddress = '"+self.getIPadress()+"' WHERE userID = "+str(userID)+"")
+        conn.commit()
+        cur.close()
+        conn.close()
+
+
+class Snap:
+    def __init__(self, _snapID, snapDate, snapChannel):
+        self._snapID = _snapID
+        self.snapDate = snapDate
+        self.snapChannel = snapChannel
 
 
 
-a = snapDB()
-#a.addUser("john1", "Juan", "passOn")
-user = a.checkLogin("john1", password="passOn")
-print(user)
+class Channel:
+    def __init__(self, _channelID, userID, friendID):
+        self._channelID = _channelID
+        self.userID = userID
+        self.friendID = friendID
+
+
+
+class User(SnapDB, Snap):
+    def __init__(self, userID):
+        conn = self.getConnection()
+        cur = conn.cursor()
+
+        cur.execute("SELECT * FROM user WHERE userID = "+str(userID)+";")
+        cur.close()
+        conn.close()
+
+        for element in cur:
+            self.userID = element[0]
+            self.userNickname = element[1]
+            self.userName = element[2]
+            self.userPassword = element[3]
+            self.userIPAddress = element[4]
+
+
+    # Adds a new friend (friendID) to the user's friend list in the DB
+    def addFriend(self, friendID):
+        conn = self.getConnection()
+        cur = conn.cursor()
+
+        if str(self.userID) == str(friendID):
+            print("No te puedes agregar a tí mismo")
+        else:
+            cur.execute("SELECT COUNT(*) FROM channel WHERE userID = "+str(self.userID)+" AND friendID = "+friendID+";")
+            num = 0
+            for element in cur:
+                num = element[0]
+
+            if num == 1:
+                print("Ya existe")
+            else:
+                cur.execute("INSERT into channel(userID, friendID) VALUES('"+str(self.userID)+"', '"+str(friendID)+"')")
+                conn.commit()
+
+        cur.close()
+        conn.close()
+
+
+    # Deletes the relation that connects userID - friendID from the DB
+    def deleteFriend(self, friendID):
+        conn = self.getConnection()
+        cur = conn.cursor()
+
+        cur.execute("DELETE FROM channel WHERE userID = "+str(self.userID)+" AND friendID = "+str(friendID)+";")
+        conn.commit()
+        cur.close()
+        conn.close()
+
+
+
+
+

@@ -18,10 +18,21 @@
       <file leaf-file-name="DB_Connection.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/DB_Connection.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="77" column="30" lean-forward="false" selection-start-line="77" selection-start-column="30" selection-end-line="77" selection-end-column="30" />
+            <state relative-caret-position="303">
+              <caret line="110" column="0" lean-forward="true" selection-start-line="110" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
               <folding>
                 <element signature="e#16#30#0" expanded="true" />
+                <element signature="e#253#587#0" expanded="false" />
+                <element signature="e#674#829#0" expanded="false" />
+                <element signature="e#927#1438#0" expanded="false" />
+                <element signature="e#1569#2313#0" expanded="false" />
+                <element signature="e#2395#2625#0" expanded="false" />
+                <element signature="e#2644#2798#0" expanded="false" />
+                <element signature="e#2821#2969#0" expanded="false" />
+                <element signature="e#3039#3452#0" expanded="false" />
+                <element signature="e#3562#4209#0" expanded="false" />
+                <element signature="e#3744#4167#0" expanded="false" />
+                <element signature="e#4329#4561#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -45,6 +56,7 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/DB_Conection.py" />
+        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/DB_Connection.py" />
       </list>
     </option>
@@ -68,6 +80,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -82,14 +95,13 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$USER_HOME$" />
     <property name="FullScreen" value="true" />
   </component>
-  <component name="RunManager" selected="Python.DB_Conection">
+  <component name="RunManager" selected="Python.main">
     <configuration default="false" name="DB_Conection" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -103,6 +115,23 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="python" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/DB_Connection.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="python" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -254,12 +283,14 @@
       <option name="USE_KEYWORD" value="false" />
       <method />
     </configuration>
-    <list size="1">
+    <list size="2">
       <item index="0" class="java.lang.String" itemvalue="Python.DB_Conection" />
+      <item index="1" class="java.lang.String" itemvalue="Python.main" />
     </list>
     <recent_temporary>
-      <list size="1">
-        <item index="0" class="java.lang.String" itemvalue="Python.DB_Conection" />
+      <list size="2">
+        <item index="0" class="java.lang.String" itemvalue="Python.main" />
+        <item index="1" class="java.lang.String" itemvalue="Python.DB_Conection" />
       </list>
     </recent_temporary>
   </component>
@@ -270,7 +301,7 @@
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.10852713" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22960372" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -290,7 +321,9 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="3" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
@@ -300,6 +333,17 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#16#30#0" expanded="true" />
+            <element signature="e#253#587#0" expanded="false" />
+            <element signature="e#674#829#0" expanded="false" />
+            <element signature="e#927#1438#0" expanded="false" />
+            <element signature="e#1569#2313#0" expanded="false" />
+            <element signature="e#2395#2625#0" expanded="false" />
+            <element signature="e#2644#2798#0" expanded="false" />
+            <element signature="e#2821#2969#0" expanded="false" />
+            <element signature="e#3039#3452#0" expanded="false" />
+            <element signature="e#3562#4209#0" expanded="false" />
+            <element signature="e#3744#4167#0" expanded="false" />
+            <element signature="e#4329#4561#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -310,6 +354,17 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#16#30#0" expanded="true" />
+            <element signature="e#253#587#0" expanded="false" />
+            <element signature="e#674#829#0" expanded="false" />
+            <element signature="e#927#1438#0" expanded="false" />
+            <element signature="e#1569#2313#0" expanded="false" />
+            <element signature="e#2395#2625#0" expanded="false" />
+            <element signature="e#2644#2798#0" expanded="false" />
+            <element signature="e#2821#2969#0" expanded="false" />
+            <element signature="e#3039#3452#0" expanded="false" />
+            <element signature="e#3562#4209#0" expanded="false" />
+            <element signature="e#3744#4167#0" expanded="false" />
+            <element signature="e#4329#4561#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -320,16 +375,69 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#16#30#0" expanded="true" />
+            <element signature="e#253#587#0" expanded="false" />
+            <element signature="e#674#829#0" expanded="false" />
+            <element signature="e#927#1438#0" expanded="false" />
+            <element signature="e#1569#2313#0" expanded="false" />
+            <element signature="e#2395#2625#0" expanded="false" />
+            <element signature="e#2644#2798#0" expanded="false" />
+            <element signature="e#2821#2969#0" expanded="false" />
+            <element signature="e#3039#3452#0" expanded="false" />
+            <element signature="e#3562#4209#0" expanded="false" />
+            <element signature="e#3744#4167#0" expanded="false" />
+            <element signature="e#4329#4561#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/DB_Connection.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="77" column="30" lean-forward="false" selection-start-line="77" selection-start-column="30" selection-end-line="77" selection-end-column="30" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#16#30#0" expanded="true" />
+            <element signature="e#253#587#0" expanded="false" />
+            <element signature="e#674#829#0" expanded="false" />
+            <element signature="e#927#1438#0" expanded="false" />
+            <element signature="e#1569#2313#0" expanded="false" />
+            <element signature="e#2395#2625#0" expanded="false" />
+            <element signature="e#2644#2798#0" expanded="false" />
+            <element signature="e#2821#2969#0" expanded="false" />
+            <element signature="e#3039#3452#0" expanded="false" />
+            <element signature="e#3562#4209#0" expanded="false" />
+            <element signature="e#3744#4167#0" expanded="false" />
+            <element signature="e#4329#4561#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DB_Connection.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="303">
+          <caret line="110" column="0" lean-forward="true" selection-start-line="110" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
+          <folding>
+            <element signature="e#16#30#0" expanded="true" />
+            <element signature="e#253#587#0" expanded="false" />
+            <element signature="e#674#829#0" expanded="false" />
+            <element signature="e#927#1438#0" expanded="false" />
+            <element signature="e#1569#2313#0" expanded="false" />
+            <element signature="e#2395#2625#0" expanded="false" />
+            <element signature="e#2644#2798#0" expanded="false" />
+            <element signature="e#2821#2969#0" expanded="false" />
+            <element signature="e#3039#3452#0" expanded="false" />
+            <element signature="e#3562#4209#0" expanded="false" />
+            <element signature="e#3744#4167#0" expanded="false" />
+            <element signature="e#4329#4561#0" expanded="false" />
           </folding>
         </state>
       </provider>
