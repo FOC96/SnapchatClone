@@ -1,11 +1,11 @@
-from DB_Connection import SnapDB
-from DB_Connection import Snap
-from DB_Connection import User
-from DB_Connection import Channel
+import htmlPy
+import os
 
-import time
+app = htmlPy.AppGUI(title=u"htmlPy Quickstart", maximized=True)
 
+app.template_path = os.path.abspath(".")
+app.static_path = os.path.abspath(".")
 
-a = SnapDB()
-u3 = User(a.checkLogin("user3", "passTres"))
-u3.deleteFriend("4")
+app.template = ("../index.html", {"username": "htmlPy_user"})
+
+app.start()
