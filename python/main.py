@@ -1,11 +1,12 @@
-import htmlPy
-import os
+from DB_Connection import User
+from DB_Connection import SnapDB
+from DB_Connection import Snap
+from DB_Connection import Channel
 
-app = htmlPy.AppGUI(title=u"htmlPy Quickstart", maximized=True)
+a = SnapDB()
+u1 = a.checkLogin("foc96", "contra123")
 
-app.template_path = os.path.abspath(".")
-app.static_path = os.path.abspath(".")
+if u1 != None:
+    user1 = User(u1)
+    print(user1.userID, user1.userName, user1.userNickname, user1.userPassword, user1.userIPAddress)
 
-app.template = ("../index.html", {"username": "htmlPy_user"})
-
-app.start()
