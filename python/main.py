@@ -1,12 +1,8 @@
-from DB_Connection import User
-from DB_Connection import SnapDB
-from DB_Connection import Snap
-from DB_Connection import Channel
+from flask import Flask, request
+app = Flask(__name__, static_url_path='')
 
-a = SnapDB()
-u1 = a.checkLogin("foc96", "contra123")
+website = "<html><head><title></title><meta charset='utf-8'><link href='../css/design.css' rel='stylesheet' type='text/css'><meta name='viewport' content='width=device-width, user-scalable=no'></head><body><div class='centerText' id='yellowSnapDiv'><img src='../media/logo.png' id='logoIn'></div><div class='centerText' id='redSnapDiv'><button>Iniciar Sesión</button></div><div class='centerText' id='blueSnapDiv'><button>Registrarme</button></div></body></html>"
 
-if u1 != None:
-    user1 = User(u1)
-    print(user1.userID, user1.userName, user1.userNickname, user1.userPassword, user1.userIPAddress)
-
+@app.route('/')
+def root():
+    return website
