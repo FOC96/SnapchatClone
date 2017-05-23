@@ -13,34 +13,43 @@ from kivy.properties import StringProperty
 from kivy.uix.screenmanager import ScreenManager, Screen, SlideTransition
 import os
 
-from login import Login
-from registrar import Registrar
 from connected import Connected
+from login import Login
 
-class Inicio(Screen):
-    def do_inicio(self):
+
+from DB_Connection import SnapDB
+
+class Registrar(Screen):
+    def do_registrar(self, loginText, passwordText):
         app = App.get_running_app()
+
+        app.username = loginText
+        app.password = passwordText
 
         self.manager.transition = SlideTransition(direction="left")
         self.manager.current = 'login'
-    def do_registrar(self):
-        app = App.get_running_app()
 
-        self.manager.transition = SlideTransition(direction="right")
-        self.manager.current = 'registrar'
+    def resetForm(self):
+        self.ids['login'].text = ""
+        self.ids['password'].text = ""
+
+    def regresar1(self):
+        self.manager.transition = SlideTransition(direction="left")
+        self.manager.current = 'inicio'
 
 
-class InicioApp(App):
+class RegistrarApp(App):
+    username = StringProperty(None)
+    password = StringProperty(None)
 
     def build(self):
         manager = ScreenManager()
 
-        manager.add_widget(Inicio(name='inicio'))
-        manager.add_widget(Login(name='login'))
         manager.add_widget(Registrar(name='registrar'))
+        manager.add_widget(Login(name='login'))
         manager.add_widget(Connected(name='connected'))
 
         return manager
 
 if __name__ == '__main__':
-    InicioApp().run()
+    RegistrarApp().run()

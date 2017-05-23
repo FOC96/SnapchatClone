@@ -1,0 +1,35 @@
+#:include login.kv
+#:include registrar.kv
+
+
+<Inicio>:
+    FloatLayout:
+        canvas:
+            Color:
+                rgb: 0.98, 1, 0
+            Rectangle:
+                size: self.size
+
+    BoxLayout:
+        id: login_layout
+        orientation: 'vertical'
+
+        AnchorLayout:
+            size_hint: (1, 4)
+            Image:
+                size_hint: (.2, .2)
+                pos_hint: {'center_x': 0.5, 'center_y': -0.5}
+                source: 'media/logo.png'
+
+        Button:
+            text: 'Inicio de sesion'
+            font_size: 24
+            background_color: (2.7, 0.0, 1.0, 1.0)
+            font_name: 'media/Fonts/Khula-Bold.ttf'
+            on_press: root.do_inicio()
+        Button:
+            text: 'Registro'
+            font_size: 24
+            background_color: (0.0, 1.5, 15.0, 1.0)
+            font_name: 'media/Fonts/Khula-Bold.ttf'
+            on_press: root.do_registrar()

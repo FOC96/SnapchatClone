@@ -1,7 +1,9 @@
 #:include connected.kv
+#:include inicio.kv
+#:include login.kv
 
 
-<Login>:
+<Registrar>:
     FloatLayout:
         canvas:
             Color:
@@ -18,13 +20,32 @@
             orientation: 'vertical'
 
             Label:
-                text: 'Inicio de Sesion'
+                text: 'Registro'
                 font_size: 30
                 font_name: 'media/Fonts/Khula-ExtraBold.ttf'
                 halign: 'center'
                 size_hint: (.9, 1)
                 pos_hint: {'x':0.05, 'y':1}
                 color: (0, 0, 0, .8)
+
+            Label:
+                text: 'Nombre Completo'
+                font_size: 18
+                font_name: 'media/Fonts/Khula-SemiBold.ttf'
+                halign: 'center'
+                size_hint: (.9, 1)
+                pos_hint: {'x':0.05, 'y':1}
+                color: (0, 0, 0, .8)
+
+            TextInput:
+                id: completeName
+                multiline:False
+                halign: 'center'
+                font_size: 28
+                background_color: (0, 0, 0, 0.1)
+                size_hint: (.9, 1)
+                font_name: 'media/Fonts/Khula-Light.ttf'
+                pos_hint: {'x':0.05, 'y':1}
 
             Label:
                 text: 'Username'
@@ -42,8 +63,8 @@
                 font_size: 28
                 background_color: (0, 0, 0, 0.1)
                 size_hint: (.9, 1)
-                pos_hint: {'x':0.05, 'y':1}
                 font_name: 'media/Fonts/Khula-Light.ttf'
+                pos_hint: {'x':0.05, 'y':1}
 
             Label:
                 text: 'Password'
@@ -61,8 +82,8 @@
                 background_color: (0, 0, 0, 0.1)
                 password:True
                 font_size: 28
-                size_hint: (.9, 1)
                 font_name: 'media/Fonts/Khula-Light.ttf'
+                size_hint: (.9, 1)
                 pos_hint: {'x':0.05, 'y':1}
                 password: True
 
@@ -70,13 +91,13 @@
             size_hint: (.5, .5)
 
         Button:
-            text: 'Entrar'
+            text: 'Crear cuenta'
             font_size: 24
             background_color: (2.7, 0.0, 1.0, 1.0)
             size_hint: (.9, 1)
             pos_hint: {'x':0.05, 'y':2}
             font_name: 'media/Fonts/Khula-Bold.ttf'
-            on_press: root.do_login(login.text, password.text)
+            on_press: root.regresar1()
 
         Button:
             text: 'Regresar'
@@ -86,4 +107,4 @@
             size_hint: (.9, 1)
             pos_hint: {'x':0.05, 'y':1}
             font_name: 'media/Fonts/Khula-Bold.ttf'
-            on_press: root.regresar()
+            on_press: root.regresar1()

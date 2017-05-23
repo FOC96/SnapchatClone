@@ -25,8 +25,8 @@ class Connected(Screen):
         self.manager.current = 'login'
         self.manager.get_screen('login').resetForm()
     def capture(self):
-        self.manager.transition = SlideTransition(direction="left")
         camera = self.ids['camera']
         timestr = time.strftime("%Y%m%d_%H%M%S")
         camera.export_to_png("IMG_{}.png".format(timestr))
         print("Captured")
+    #def close(self):
