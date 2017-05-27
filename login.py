@@ -12,7 +12,7 @@ from kivy.uix.button import Button
 from kivy.properties import StringProperty
 from kivy.uix.screenmanager import ScreenManager, Screen, SlideTransition
 import os
-
+import localFiles
 from connected import Connected
 import userSettings
 
@@ -25,8 +25,9 @@ class Login(Screen):
         userID = val[1]
 
         if val[1] != None:
-            global userID
-            userID = val[1]
+            a = SnapDB()
+            a.getUserData(userID)
+
             self.manager.transition = SlideTransition(direction="left")
             self.manager.current = 'connected'
 

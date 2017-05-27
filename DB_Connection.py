@@ -8,6 +8,7 @@ from passlib.hash import pbkdf2_sha256
 import time
 #To get the device's MAC address
 from uuid import getnode
+import localFiles
 
 
 class SnapDB:
@@ -77,6 +78,8 @@ class SnapDB:
         conn.close()
 
         if session == True:
+            a = SnapDB()
+            localFiles.saveUserInfoLocally(a.getUserData(userID)[0], a.getUserData(userID)[1], a.getUserData(userID)[2], a.getUserData(userID)[3])
             print("Sesión iniciada con éxito,", name)
             self.updateIP(userID)
             return True, userID
@@ -84,6 +87,20 @@ class SnapDB:
             print("Error en los campos")
             return False, None
 
+
+    def getUserData(self, userID):
+        conn = self.getConnection()
+        cur = conn.cursor()
+
+        cur.execute("SELECT userID, userNickname, userName, userIPAddress FROM user WHERE userID = "+str(userID))
+
+        for element in cur:
+            userID = element[0]
+            userNickname = element[1]
+            userName = element[2]
+            userIPaddress = element[3]
+
+        return userID, userNickname, userName, userIPaddress
 
     # Updates the user's IP Address in the DB
     def updateIP(self, userID):
