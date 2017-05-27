@@ -20,17 +20,17 @@ from login import Login
 from DB_Connection import SnapDB
 
 class Registrar(Screen):
-    def do_registrar(self, loginText, passwordText):
-        app = App.get_running_app()
+    def do_registrar(self, userName, userNickName, userPassword):
+        a = SnapDB()
+        a.addUser(name=userName, nickName=userNickName, password=userPassword)
 
-        app.username = loginText
-        app.password = passwordText
+        app = App.get_running_app()
 
         self.manager.transition = SlideTransition(direction="left")
         self.manager.current = 'login'
 
     def resetForm(self):
-        self.ids['login'].text = ""
+        self.ids['username'].text = ""
         self.ids['password'].text = ""
 
     def regresar1(self):

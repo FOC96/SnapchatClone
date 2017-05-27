@@ -6,6 +6,8 @@ import socket
 from passlib.hash import pbkdf2_sha256
 # Snap's datetime
 import time
+#To get the device's MAC address
+from uuid import getnode
 
 
 class SnapDB:
@@ -77,10 +79,10 @@ class SnapDB:
         if session == True:
             print("Sesión iniciada con éxito,", name)
             self.updateIP(userID)
-            return userID
+            return True, userID
         else:
             print("Error en los campos")
-            return False
+            return False, None
 
 
     # Updates the user's IP Address in the DB
@@ -94,13 +96,15 @@ class SnapDB:
         conn.close()
 
 
-class Snap:
-    def __init__(self, _snapID, snapDate, snapChannel):
-        self._snapID = _snapID
-        self.snapDate = snapDate
-        self.snapChannel = snapChannel
-
-
+class Snap(SnapDB):
+    def saveSnap(self, snapName, snapSender):
+        conn = SnapDB()
+        conn = conn.getConnection()
+        cur = conn.cursor()
+        cur.execute("INSERT INTO snap(snapName, snapSender, snapStatus) VALUES(\'"+str(snapName)+"\', "+str(snapSender)+", 0);")
+        conn.commit()
+        cur.close()
+        conn.close()
 
 class Channel:
     def __init__(self, _channelID, userID, friendID):
@@ -110,21 +114,11 @@ class Channel:
 
 
 
-class User(SnapDB, Snap):
-    def __init__(self, userID):
-        conn = self.getConnection()
-        cur = conn.cursor()
+class User(SnapDB):
 
-        cur.execute("SELECT * FROM user WHERE userID = "+str(userID)+";")
-        cur.close()
-        conn.close()
-
-        for element in cur:
-            self.userID = element[0]
-            self.userNickname = element[1]
-            self.userName = element[2]
-            self.userPassword = element[3]
-            self.userIPAddress = element[4]
+    def getUserID(self):
+        IPAdd = self.getIPadress()
+        print(IPAdd)
 
 
     # Adds a new friend (friendID) to the user's friend list in the DB
@@ -148,6 +142,13 @@ class User(SnapDB, Snap):
 
         cur.close()
         conn.close()
+
+
+    def getUserInfo(self, userID):
+        conn = self.getConnection()
+        cur = conn.cursor()
+
+        cur.execute("SELECT * ")
 
 
     # Deletes the relation that connects userID - friendID from the DB

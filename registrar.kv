@@ -38,7 +38,7 @@
                 color: (0, 0, 0, .8)
 
             TextInput:
-                id: completeName
+                id: userName
                 multiline:False
                 halign: 'center'
                 font_size: 28
@@ -57,7 +57,7 @@
                 color: (0, 0, 0, .8)
 
             TextInput:
-                id: username
+                id: userNickname
                 multiline:False
                 halign: 'center'
                 font_size: 28
@@ -76,7 +76,7 @@
                 color: (0, 0, 0, .8)
 
             TextInput:
-                id: password
+                id: userPassword
                 halign: 'center'
                 multiline:False
                 background_color: (0, 0, 0, 0.1)
@@ -97,7 +97,7 @@
             size_hint: (.9, 1)
             pos_hint: {'x':0.05, 'y':2}
             font_name: 'media/Fonts/Khula-Bold.ttf'
-            on_press: root.regresar1()
+            on_press: root.do_registrar(userName.text, userNickname.text, userPassword.text)
 
         Button:
             text: 'Regresar'

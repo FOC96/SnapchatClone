@@ -14,22 +14,29 @@ from kivy.uix.screenmanager import ScreenManager, Screen, SlideTransition
 import os
 
 from connected import Connected
+import userSettings
+
+from DB_Connection import SnapDB
 
 class Login(Screen):
     def do_login(self, loginText, passwordText):
+        a = SnapDB()
+        val = a.checkLogin(nickname=loginText, password=passwordText)
+        userID = val[1]
+
+        if val[1] != None:
+            global userID
+            userID = val[1]
+            self.manager.transition = SlideTransition(direction="left")
+            self.manager.current = 'connected'
+
         app = App.get_running_app()
-
-        app.username = loginText
-        app.password = passwordText
-
-        self.manager.transition = SlideTransition(direction="left")
-        self.manager.current = 'connected'
 
         app.config.read(app.get_application_config())
         app.config.write()
 
     def resetForm(self):
-        self.ids['login'].text = ""
+        self.ids['username'].text = ""
         self.ids['password'].text = ""
 
     def regresar(self):
