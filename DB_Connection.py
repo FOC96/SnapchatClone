@@ -117,11 +117,11 @@ class SnapDB:
 
 
 class Snap(SnapDB):
-    def saveSnap(self, snapName, snapSender, snapFile):
+    def saveSnap(self, snapName, snapSender, snapReceiver, snapFile):
         conn = SnapDB()
         conn = conn.getConnection()
         cur = conn.cursor()
-        cur.execute("INSERT INTO snap(snapName, snapSender, snapStatus, snapFile) VALUES(\'"+str(snapName)+"\', "+str(snapSender)+", 0, "+str(snapFile)+");")
+        cur.execute("INSERT INTO snap(snapName, snapSender, snapReceiver, snapStatus, snapFile) VALUES(\'"+str(snapName)+"\', "+str(snapSender)+", "+str(snapReceiver)+", 0, "+str(snapFile)+");")
         conn.commit()
         cur.close()
         conn.close()

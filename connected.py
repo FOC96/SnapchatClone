@@ -29,7 +29,7 @@ class Connected(Screen):
         self.manager.current = 'login'
         self.manager.get_screen('login').resetForm()
 
-    def capture(self, option):
+    def capture(self, option, snapReceiver):
         camera = self.ids['camera']
 
         # Naming snap
@@ -41,7 +41,7 @@ class Connected(Screen):
 
         # Database registry !!FALTA SABER EL USERID DE QUIÉN LO MANDA Y A QUIÉN!!
         snap = Snap()
-        snap.saveSnap(str(snapName), localFiles.getLocalUserInfo()[0], "\""+str(ImageFunctions.imageToText(snapName)).strip()+"\"")
+        snap.saveSnap(snapName=str(snapName), snapSender=localFiles.getLocalUserInfo()[0], snapFile="\""+str(ImageFunctions.imageToText(snapName)).strip()+"\"", snapReceiver=snapReceiver)
 
         if option == 1:
             print("NORMAL")
@@ -51,3 +51,8 @@ class Connected(Screen):
             print("SEPIA")
         elif option == 4:
             print("BLUR")
+
+        ##aqui termina el abrir ventana
+
+    def checkSnapInbox(self):
+        print("BUSCANDO SNAPS")

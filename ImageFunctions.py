@@ -1,5 +1,6 @@
 import base64
 import PIL.Image as Image
+from PIL import ImageFilter
 from io import BytesIO
 import os
 import time
@@ -12,16 +13,25 @@ def imageToText(name):
     encoded = base64.b64encode(open(path, "rb").read())
     return encoded
 
-# def textToImage(userID):
-#     snap = Snap().getConnection()
-#     list = snap.getImageFile(userID)[0]
-#
-#     #Displays all snaps found
-#     for element in list:
-#         img = Image.open(BytesIO(base64.b64decode(element)))
-#         Image._show(img)
-#
-#     #Deletes snaps showed
+def textToImage(userID):
+    snap = Snap().getConnection()
+    list = snap.getImageFile(userID)[0]
+
+    #Displays all snaps found
+    for element in list:
+        img = Image.open(BytesIO(base64.b64decode(element)))
+        Image._show(img)
+
+    #Deletes snaps showed
+
 
 def showImage(encodedString):
-    Image._show(Image.open(BytesIO(base64.b64decode(encodedString))))
+    #Image._show(Image.open(BytesIO(base64.b64decode(encodedString))))
+    Image._show(Image.open(base64.b64decode(encodedString)))
+
+
+# EFECTOS
+def Blur(path):
+    img = Image.open(path)
+    img = img.filter(ImageFilter.GaussianBlur(20))
+    return img

@@ -13,35 +13,52 @@
                 resolution: (640, 480)
                 play: True
 
+
+
         BoxLayout:
             orientation: 'horizontal'
             height: 48
+
+            TextInput:
+                id: snapReceiver
+                multiline:False
+                halign: 'center'
+                font_size: 28
+                background_color: (1, 1, 1, 1)
+                height: '48dp'
+                size_hint_y: None
+                font_name: 'media/Fonts/Khula-Light.ttf'
 
             Button:
                 text: "Normal"
                 size_hint_y: None
                 height: '48dp'
                 background_color: (0.43, 0.62, 0.71, 1.0)
-                on_press: root.capture(1)
+                on_press: root.capture(1, snapReceiver.text)
             Button:
                 text: "Grayscale"
                 size_hint_y: None
                 height: '48dp'
                 background_color: (0.9, 0.9, 0.9, 1.0)
-                on_press: root.capture(2)
+                on_press: root.capture(2, snapReceiver.text)
             Button:
                 text: "Sepia"
                 size_hint_y: None
                 height: '48dp'
                 background_color: (0.7, 0.62, 0.4, 1.0)
-                on_press: root.capture(3)
+                on_press: root.capture(3, snapReceiver.text)
             Button:
                 text: "Blur"
                 size_hint_y: None
                 height: '48dp'
                 background_color: (0.52, 0.42, 0.71, 1.0)
-                on_press: root.capture(4)
-
+                on_press: root.capture(4, snapReceiver.text)
+            Button:
+                text: "Snaps recibidos"
+                size_hint_y: None
+                height: '48dp'
+                background_color: (0.52, 0.42, 0.71, 1.0)
+                on_press: root.checkSnapInbox()
             Button:
                 text: "Sign out"
                 font_size: 24
