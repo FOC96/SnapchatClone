@@ -17,28 +17,17 @@
                 size_hint: None, None
                 size: 24, 24
                 source: 'media/logo.png'
-            Label:
-                height: 24
-                text_size: self.width, None
-                color: (0, 0, 0, .8)
-                text: 'SnapChat Clone'
     BoxLayout
         id: login_layout
         orientation: 'vertical'
         background_color: (0.98, 1, 1, 1)
-
-
-        Label:
-            text: 'Bienvenido!'
-            font_size: 32
-            color: (0, 0, 0, .8)
-
 
         Button:
             text: 'Iniciar Sesion'
             font_size: 24
             background_color: (2.7, 0.0, 1.0, 1.0)
             on_press: root.do_inicio()
+
         Button:
             text: 'Regresar'
             font_size: 24

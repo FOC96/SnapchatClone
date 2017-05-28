@@ -9,7 +9,7 @@ import time
 #To get the device's MAC address
 from uuid import getnode
 import localFiles
-
+import ImageFunctions
 
 class SnapDB:
     # Get conection with database -> connection
@@ -100,6 +100,9 @@ class SnapDB:
             userName = element[2]
             userIPaddress = element[3]
 
+        cur.close()
+        conn.close()
+
         return userID, userNickname, userName, userIPaddress
 
     # Updates the user's IP Address in the DB
@@ -114,20 +117,29 @@ class SnapDB:
 
 
 class Snap(SnapDB):
-    def saveSnap(self, snapName, snapSender):
+    def saveSnap(self, snapName, snapSender, snapFile):
         conn = SnapDB()
         conn = conn.getConnection()
         cur = conn.cursor()
-        cur.execute("INSERT INTO snap(snapName, snapSender, snapStatus) VALUES(\'"+str(snapName)+"\', "+str(snapSender)+", 0);")
+        cur.execute("INSERT INTO snap(snapName, snapSender, snapStatus, snapFile) VALUES(\'"+str(snapName)+"\', "+str(snapSender)+", 0, "+str(snapFile)+");")
         conn.commit()
         cur.close()
         conn.close()
 
-class Channel:
-    def __init__(self, _channelID, userID, friendID):
-        self._channelID = _channelID
-        self.userID = userID
-        self.friendID = friendID
+    def getImageFile(self, snapReceiver):
+        conn = self.getConnection()
+        cur = conn.cursor()
+
+        cur.execute("SELECT snapID, snapFile FROM snap WHERE snapReceiver = "+str(snapReceiver)+";")
+
+        deleteIDs = []
+        snapsReceived = []
+
+        for result in cur:
+            deleteIDs.append(result[0])
+            snapsReceived.append(result[1])
+
+        return snapsReceived, deleteIDs
 
 
 

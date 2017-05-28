@@ -19,7 +19,8 @@ from kivy.uix.button import Button
 from kivy.lang import Builder
 import time
 
-
+import ImageFunctions
+import localFiles
 from DB_Connection import SnapDB, Snap, User
 
 class Connected(Screen):
@@ -28,18 +29,25 @@ class Connected(Screen):
         self.manager.current = 'login'
         self.manager.get_screen('login').resetForm()
 
-    def capture(self):
+    def capture(self, option):
         camera = self.ids['camera']
 
         # Naming snap
         timestr = time.strftime("%Y%m%d_%H%M%S")
         snapName = "Snap_{}.png".format(timestr)
 
-        # Database registry !!FALTA SABER EL USERID DE QUIÉN LO MANDA Y A QUIÉN!!
-        snap = Snap()
-        snap.saveSnap(str(snapName), 1)
-
         # Saving file.png
         camera.export_to_png(snapName)
 
-    #def close(self):
+        # Database registry !!FALTA SABER EL USERID DE QUIÉN LO MANDA Y A QUIÉN!!
+        snap = Snap()
+        snap.saveSnap(str(snapName), localFiles.getLocalUserInfo()[0], "\""+str(ImageFunctions.imageToText(snapName)).strip()+"\"")
+
+        if option == 1:
+            print("NORMAL")
+        elif option == 2:
+            print("GRAYSCALE")
+        elif option == 3:
+            print("SEPIA")
+        elif option == 4:
+            print("BLUR")

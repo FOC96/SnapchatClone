@@ -1,34 +1,52 @@
-
-
 <Connected>:
     FloatLayout:
         canvas:
             Color:
-                rgb: 1, 1, 1
+                rgb: 0, 0, 0
             Rectangle:
-                source: 'data/images/snap.jpg'
                 size: self.size
 
-    BoxLayout:
-        orientation: 'vertical'
+        AnchorLayout:
+            size_hint: (1,1)
+            Camera:
+                id: camera
+                resolution: (640, 480)
+                play: True
 
-        Camera:
-            id: camera
-            resolution: (640, 480)
-            play: True
+        BoxLayout:
+            orientation: 'horizontal'
+            height: 48
 
-        Button:
-            text: "Tomar foto"
-            size_hint_y: None
-            height: '48dp'
-            background_color: (0.0, 1.5, 15.0, 1.0)
-            on_press: root.capture()
+            Button:
+                text: "Normal"
+                size_hint_y: None
+                height: '48dp'
+                background_color: (0.43, 0.62, 0.71, 1.0)
+                on_press: root.capture(1)
+            Button:
+                text: "Grayscale"
+                size_hint_y: None
+                height: '48dp'
+                background_color: (0.9, 0.9, 0.9, 1.0)
+                on_press: root.capture(2)
+            Button:
+                text: "Sepia"
+                size_hint_y: None
+                height: '48dp'
+                background_color: (0.7, 0.62, 0.4, 1.0)
+                on_press: root.capture(3)
+            Button:
+                text: "Blur"
+                size_hint_y: None
+                height: '48dp'
+                background_color: (0.52, 0.42, 0.71, 1.0)
+                on_press: root.capture(4)
 
-        Button:
-            text: "Cerrar sesion"
-            font_size: 24
-            size_hint_y: None
-            width: '48dp'
-            height: '48dp'
-            background_color: (10.0, 0.0, 0.0, 1.0)
-            on_press: root.disconnect()
+            Button:
+                text: "Sign out"
+                font_size: 24
+                size_hint_y: None
+                width: '48dp'
+                height: '48dp'
+                background_color: (10.0, 0.0, 0.0, 1.0)
+                on_press: root.disconnect()
