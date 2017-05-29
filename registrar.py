@@ -13,6 +13,10 @@ from kivy.properties import StringProperty
 from kivy.uix.screenmanager import ScreenManager, Screen, SlideTransition
 import os
 
+from kivy.uix.popup import Popup
+from kivy.uix.label import Label
+from kivy.uix.button import Button
+
 from connected import Connected
 from login import Login
 
@@ -22,12 +26,16 @@ from DB_Connection import SnapDB
 class Registrar(Screen):
     def do_registrar(self, userName, userNickName, userPassword):
         a = SnapDB()
-        a.addUser(name=userName, nickName=userNickName, password=userPassword)
 
-        app = App.get_running_app()
+        if userName == "" or userNickName == "" or userPassword == "":
+            popup = Popup(title='Error', content=Label(text='Hay campos vacíos en el registro.'), size_hint=(None, None), size=(350, 200))
+            popup.open()
+        else:
+            a.addUser(name=userName, nickName=userNickName, password=userPassword)
+            app = App.get_running_app()
 
-        self.manager.transition = SlideTransition(direction="left")
-        self.manager.current = 'login'
+            self.manager.transition = SlideTransition(direction="left")
+            self.manager.current = 'login'
 
     def resetForm(self):
         self.ids['username'].text = ""

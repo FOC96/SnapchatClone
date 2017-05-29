@@ -67,6 +67,4 @@ def editar2(img):#Sepia
 
 def editar3(img):#GrayScale
         imagen = Image.open(img).convert('LA')
-
-        imagen.show()
         imagen.save(img)

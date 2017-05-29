@@ -15,6 +15,9 @@ import os
 import localFiles
 from connected import Connected
 import userSettings
+from kivy.uix.popup import Popup
+from kivy.uix.label import Label
+from kivy.uix.button import Button
 
 from DB_Connection import SnapDB
 
@@ -30,6 +33,9 @@ class Login(Screen):
 
             self.manager.transition = SlideTransition(direction="left")
             self.manager.current = 'connected'
+        else:
+            popup = Popup(title='Error', content=Label(text='Tu contraseña o el usuario no son correctos'), size_hint=(None, None), size=(350, 200))
+            popup.open()
 
         app = App.get_running_app()
 

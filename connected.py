@@ -17,6 +17,10 @@ from kivy.uix.screenmanager import Screen, SlideTransition
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.button import Button
 from kivy.lang import Builder
+from kivy.uix.popup import Popup
+from kivy.uix.label import Label
+from kivy.uix.button import Button
+
 import time
 
 import ImageFunctions
@@ -66,8 +70,12 @@ class Connected(Screen):
             a = Snap()
             namesFound = a.getImageName(localFiles.getLocalUserInfo()[0])[0]
 
-            for x in range(len(namesFound)):
-                img = str(namesFound[x]).strip()
-                ImageFunctions.showImg(img)
+            if len(namesFound) == 0:
+                popup = Popup(title='Oops!', content=Label(text='Parece que no tienes snaps nuevos.'), size_hint=(None, None), size=(350, 200))
+                popup.open()
+            else:
+                for x in range(len(namesFound)):
+                    img = str(namesFound[x]).strip()
+                    ImageFunctions.showImg(img)
         except:
             print("ERROR")

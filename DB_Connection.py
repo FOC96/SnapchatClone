@@ -121,7 +121,7 @@ class Snap(SnapDB):
         conn = SnapDB()
         conn = conn.getConnection()
         cur = conn.cursor()
-        cur.execute("INSERT INTO snap(snapName, snapSender, snapReceiver, snapStatus, snapFile) VALUES(\'"+str(snapName)+"\', "+str(snapSender)+", "+str(snapReceiver)+", 0, "+str(snapFile)+");")
+        cur.execute("INSERT INTO snap(snapName, snapSender, snapReceiver, snapStatus, snapFile) VALUES(\'"+str(snapName)+"\', "+str(snapSender)+", "+str(snapReceiver)+", 0, 'here goes the base64 encoded string from the image');")
         conn.commit()
         cur.close()
         conn.close()
