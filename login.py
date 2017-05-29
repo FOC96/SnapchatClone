@@ -30,7 +30,8 @@ class Login(Screen):
         if val[1] != None:
             a = SnapDB()
             a.getUserData(userID)
-
+            popup = Popup(title='Hola', content=Label(text='Hola '+localFiles.getLocalUserInfo()[2].split(" ")[0]+', diviértete :)'), size_hint=(None, None), size=(350, 200))
+            popup.open()
             self.manager.transition = SlideTransition(direction="left")
             self.manager.current = 'connected'
         else:

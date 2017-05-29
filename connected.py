@@ -76,7 +76,7 @@ class Connected(Screen):
             idsFound = a.getImageName(localFiles.getLocalUserInfo()[0])[1]
 
             if len(namesFound) == 0:
-                popup = Popup(title='Oops!', content=Label(text='Parece que no tienes snaps nuevos.'), size_hint=(None, None), size=(350, 200))
+                popup = Popup(title='Oops!', content=Label(text='Parece que no tienes snaps nuevos, '+localFiles.getLocalUserInfo()[2].split(" ")[0]), size_hint=(None, None), size=(350, 200))
                 popup.open()
             else:
                 for x in range(len(namesFound)):
