@@ -45,21 +45,21 @@ def editar1(img):#Blurred
     imagen.convert("RGB")
     imagen.save(img)
 
+def make_linear_ramp(white):
+    ramp = []
+    r, g, b = white
+    for i in range(255):
+        ramp.extend((r * i / 255, g * i / 255, b * i / 255))
+    return ramp
+
 def editar2(img):#Sepia
-        def make_linear_ramp(white):
-            ramp = []
-            r, g, b = white
-            for i in range(255):
-                ramp.extend((r * i / 255, g * i / 255, b * i / 255))
-            return ramp
-        sepia = make_linear_ramp((255, 240, 192))
+    sepia = make_linear_ramp((255, 240, 192))
+    im = Image.open(img)
+    im = im.convert('L')
+    im.putpalette(sepia)
+    im = im.convert('RGB')
 
-        im = Image.open(img)
-        if im.mode != "LA":
-            im = im.convert("LA")
-        im.putpalette(sepia)
-
-        im.save(img)
+    im.save(img)
 
 def editar3(img):#GrayScale
     imagen = Image.open(img).convert('LA')

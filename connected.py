@@ -87,5 +87,6 @@ class Connected(Screen):
             print("ERROR")
 
     def signOut(self):
+        localFiles.saveUserInfoLocally(userID=0, userIPaddress=0, userName="No name", userNickname="No Nickname")
         self.manager.transition = SlideTransition(direction="left")
         self.manager.current = 'inicio'
