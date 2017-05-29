@@ -79,3 +79,7 @@ class Connected(Screen):
                     ImageFunctions.showImg(img)
         except:
             print("ERROR")
+
+    def signOut(self):
+        self.manager.transition = SlideTransition(direction="left")
+        self.manager.current = 'inicio'
