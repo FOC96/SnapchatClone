@@ -16,7 +16,7 @@ In order to execute SnapchatClone, you'll need to install the following:
 * **PyMySQL** - *Database connection*
 * **passLib** - *Password hashing*
 * **Kivy** - *Graphical Interface*
-* **os** - *Textfile creation, files location*
+* **os** - *Textfile creation, files' location*
 * **PIL** - *Image processing*
 
 
