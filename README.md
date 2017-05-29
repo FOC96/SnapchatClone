@@ -11,7 +11,7 @@ The main goal of this is to recreate Snapchat's basic functions: to send and rec
 
 ## Requirements
 * Python 3.x
-* MySQL Database
+* MySQL Database *(SnapDB.sql)*
 
 ### Libraries
 * **pyMysql** - *Database connection*
