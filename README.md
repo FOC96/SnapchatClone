@@ -18,4 +18,4 @@ The main goal of this is to recreate Snapchat's basic functions: to send and rec
 * **passLib** - *Password hashing*
 * **Kivy** - *Graphical Interface*
 * **os** - *Textfile creation, files location*
-* ***PIL** - *Image processing*
+* **PIL** - *Image processing*
