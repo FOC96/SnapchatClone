@@ -13,7 +13,7 @@ In order to execute SnapchatClone, you'll need to install the following:
 * PyCharm Edu
 
 #### Libraries
-* **pyMysql** - *Database connection*
+* **PyMySQL** - *Database connection*
 * **passLib** - *Password hashing*
 * **Kivy** - *Graphical Interface*
 * **os** - *Textfile creation, files location*
