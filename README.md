@@ -10,11 +10,11 @@ Cristian Caro del Castillo Legorreta
 Juan Daniel Domínguez Sánchez
 
 ## Requirements
-Python 3.x
-MySQL Database
+* Python 3.x
+* MySQL Database
 
 ### Libraries
-PyMYSQL
-PassLib
-Kivy
-OS
+* **pyMysql** - *Database connection*
+* **passLib** - *Password hashing*
+* **Kivy** - *Graphical Interface*
+* **os** - *Textfile creation, files location*
