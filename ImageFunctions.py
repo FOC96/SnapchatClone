@@ -4,7 +4,8 @@ from PIL import ImageFilter
 from io import BytesIO
 import os
 import time
-#from DB_Connection import Snap
+from DB_Connection import Snap
+import localFiles
 
 def imageToText(name):
     path = os.getcwd()
@@ -13,8 +14,9 @@ def imageToText(name):
     encoded = base64.b64encode(open(path, "rb").read())
     return encoded
 
-def textToImage(userID):
+def textToImage():
     snap = Snap().getConnection()
+    userID = localFiles.getLocalUserInfo()[0]
     list = snap.getImageFile(userID)[0]
 
     #Displays all snaps found
@@ -29,9 +31,42 @@ def showImage(encodedString):
     #Image._show(Image.open(BytesIO(base64.b64decode(encodedString))))
     Image._show(Image.open(base64.b64decode(encodedString)))
 
+def showImg(name):
+    path = os.getcwd()
+    path = path+"/"+name
+    img = Image.open(path)
+    img.show()
 
 # EFECTOS
-def Blur(path):
-    img = Image.open(path)
-    img = img.filter(ImageFilter.GaussianBlur(20))
-    return img
+from PIL import Image, ImageFilter, ImageOps
+
+
+def editar1(img):#Blurred
+        imagen = Image.open(img)
+        blurred = imagen.filter(ImageFilter.BLUR)
+
+        blurred.show()
+        blurred.save(img)
+
+def editar2(img):#Sepia
+        def make_linear_ramp(white):
+            ramp = []
+            r, g, b = white
+            for i in range(255):
+                ramp.extend((r * i / 255, g * i / 255, b * i / 255))
+            return ramp
+        sepia = make_linear_ramp((255, 240, 192))
+
+        im = Image.open(img)
+        if im.mode != "LA":
+            im = im.convert("LA")
+        im.putpalette(sepia)
+
+        im.show()
+        im.save(img)
+
+def editar3(img):#GrayScale
+        imagen = Image.open(img).convert('LA')
+
+        imagen.show()
+        imagen.save(img)

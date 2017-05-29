@@ -141,6 +141,21 @@ class Snap(SnapDB):
 
         return snapsReceived, deleteIDs
 
+    def getImageName(self, snapReceiver):
+        conn = self.getConnection()
+        cur = conn.cursor()
+
+        cur.execute("SELECT snapID, snapName FROM snap WHERE snapReceiver = "+str(snapReceiver)+";")
+
+        deleteIDs = []
+        snapsReceived = []
+
+        for result in cur:
+            deleteIDs.append(result[0])
+            snapsReceived.append(result[1])
+
+        return snapsReceived, deleteIDs
+
 
 
 class User(SnapDB):

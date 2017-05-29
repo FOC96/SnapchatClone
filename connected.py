@@ -43,16 +43,31 @@ class Connected(Screen):
         snap = Snap()
         snap.saveSnap(snapName=str(snapName), snapSender=localFiles.getLocalUserInfo()[0], snapFile="\""+str(ImageFunctions.imageToText(snapName)).strip()+"\"", snapReceiver=snapReceiver)
 
+        path = os.getcwd()
+        path = path+"/"+snapName
+
         if option == 1:
             print("NORMAL")
         elif option == 2:
             print("GRAYSCALE")
+            ImageFunctions.editar3(path)
         elif option == 3:
             print("SEPIA")
+            ImageFunctions.editar2(path)
         elif option == 4:
             print("BLUR")
+            ImageFunctions.editar1(path)
 
         ##aqui termina el abrir ventana
 
     def checkSnapInbox(self):
-        print("BUSCANDO SNAPS")
+        try:
+            print("Looking for snaps...")
+            a = Snap()
+            namesFound = a.getImageName(localFiles.getLocalUserInfo()[0])[0]
+
+            for x in range(len(namesFound)):
+                img = str(namesFound[x]).strip()
+                ImageFunctions.showImg(img)
+        except:
+            print("ERROR")

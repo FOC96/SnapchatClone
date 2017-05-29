@@ -17,23 +17,3 @@
 # file = "a"
 #
 # #ImageFunctions.showImage(file)
-
-from PIL import Image
-from PIL import ImageFilter
-
-img = Image.open("/Users/fernandorc/Projects/SnapchatClone/Snap_20170528_172604.png")
-img = img.convert('1')
-Image._show(img)
-
-
-def editar1(self, img):
-    imagen = Image.open(img)
-    blurred = imagen.filter(ImageFilter.BLUR)
-
-    blurred.show()
-    blurred.save(img + "blurred.png")
-
-def Grayscale(path):
-    img = Image.open(path)
-    img = img.convert('1')
-    return img
