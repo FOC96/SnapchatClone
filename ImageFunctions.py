@@ -49,15 +49,17 @@ def make_linear_ramp(white):
     ramp = []
     r, g, b = white
     for i in range(255):
-        ramp.extend((r * i / 255, g * i / 255, b * i / 255))
+        ramp.extend((r * i // 255, g * i // 255, b * i // 255))
     return ramp
 
 def editar2(img):#Sepia
+
     sepia = make_linear_ramp((255, 240, 192))
+
     im = Image.open(img)
-    im = im.convert('L')
+    im = im.convert("L")
     im.putpalette(sepia)
-    im = im.convert('RGB')
+    im = im.convert("RGB")
 
     im.save(img)
 
