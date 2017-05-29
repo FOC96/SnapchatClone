@@ -26,7 +26,6 @@ def textToImage():
 
     #Deletes snaps showed
 
-
 def showImage(encodedString):
     #Image._show(Image.open(BytesIO(base64.b64decode(encodedString))))
     Image._show(Image.open(base64.b64decode(encodedString)))

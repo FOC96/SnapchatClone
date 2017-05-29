@@ -69,6 +69,7 @@ class Connected(Screen):
             print("Looking for snaps...")
             a = Snap()
             namesFound = a.getImageName(localFiles.getLocalUserInfo()[0])[0]
+            idsFound = a.getImageName(localFiles.getLocalUserInfo()[0])[1]
 
             if len(namesFound) == 0:
                 popup = Popup(title='Oops!', content=Label(text='Parece que no tienes snaps nuevos.'), size_hint=(None, None), size=(350, 200))
@@ -77,6 +78,7 @@ class Connected(Screen):
                 for x in range(len(namesFound)):
                     img = str(namesFound[x]).strip()
                     ImageFunctions.showImg(img)
+                a.updateSnapStatus(localFiles.getLocalUserInfo()[0])
         except:
             print("ERROR")
 

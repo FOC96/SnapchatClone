@@ -145,7 +145,7 @@ class Snap(SnapDB):
         conn = self.getConnection()
         cur = conn.cursor()
 
-        cur.execute("SELECT snapID, snapName FROM snap WHERE snapReceiver = "+str(snapReceiver)+";")
+        cur.execute("SELECT snapID, snapName FROM snap WHERE snapReceiver = "+str(snapReceiver)+" AND snapStatus = 0;")
 
         deleteIDs = []
         snapsReceived = []
@@ -156,36 +156,20 @@ class Snap(SnapDB):
 
         return snapsReceived, deleteIDs
 
+    def updateSnapStatus(self, userID):
+        conn = self.getConnection()
+        cur = conn.cursor()
 
+        cur.execute("UPDATE snap SET snapStatus = 1 WHERE snapReceiver = "+str(userID)+";")
+        conn.commit()
+        cur.close()
+        conn.close()
 
 class User(SnapDB):
 
     def getUserID(self):
         IPAdd = self.getIPadress()
         print(IPAdd)
-
-
-    # Adds a new friend (friendID) to the user's friend list in the DB
-    def addFriend(self, friendID):
-        conn = self.getConnection()
-        cur = conn.cursor()
-
-        if str(self.userID) == str(friendID):
-            print("No te puedes agregar a tí mismo")
-        else:
-            cur.execute("SELECT COUNT(*) FROM channel WHERE userID = "+str(self.userID)+" AND friendID = "+friendID+";")
-            num = 0
-            for element in cur:
-                num = element[0]
-
-            if num == 1:
-                print("Ya existe")
-            else:
-                cur.execute("INSERT into channel(userID, friendID) VALUES('"+str(self.userID)+"', '"+str(friendID)+"')")
-                conn.commit()
-
-        cur.close()
-        conn.close()
 
 
     def getUserInfo(self, userID):
