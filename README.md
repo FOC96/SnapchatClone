@@ -5,9 +5,9 @@ This is our final project for Programming Paradigms class. It'll be developed us
 The main goal of this is to recreate Snapchat's basic functions: to send and receive pictures which will destroy themselves after they've been opened.
 
 ## Autors
-Fernando Ortiz Rico Celio
-Cristian Caro del Castillo Legorreta
-Juan Daniel Domínguez Sánchez
+* Fernando Ortiz Rico Celio
+* Cristian Caro del Castillo Legorreta
+* Juan Daniel Domínguez Sánchez
 
 ## Requirements
 * Python 3.x
