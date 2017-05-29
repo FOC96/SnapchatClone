@@ -41,11 +41,9 @@ from PIL import Image, ImageFilter, ImageOps
 
 
 def editar1(img):#Blurred
-        imagen = Image.open(img)
-        blurred = imagen.filter(ImageFilter.BLUR)
-
-        blurred.show()
-        blurred.save(img)
+    imagen = Image.open(img).filter(ImageFilter.GaussianBlur(radius=15))
+    imagen.convert("RGB")
+    imagen.save(img)
 
 def editar2(img):#Sepia
         def make_linear_ramp(white):
@@ -61,9 +59,8 @@ def editar2(img):#Sepia
             im = im.convert("LA")
         im.putpalette(sepia)
 
-        im.show()
         im.save(img)
 
 def editar3(img):#GrayScale
-        imagen = Image.open(img).convert('LA')
-        imagen.save(img)
+    imagen = Image.open(img).convert('LA')
+    imagen.save(img)

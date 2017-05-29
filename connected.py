@@ -36,33 +36,37 @@ class Connected(Screen):
     def capture(self, option, snapReceiver):
         camera = self.ids['camera']
 
-        # Naming snap
-        timestr = time.strftime("%Y%m%d_%H%M%S")
-        snapName = "Snap_{}.png".format(timestr)
+        if snapReceiver != "" and snapReceiver != None:
 
-        # Saving file.png
-        camera.export_to_png(snapName)
+            # Naming snap
+            timestr = time.strftime("%Y%m%d_%H%M%S")
+            snapName = "Snap_{}.png".format(timestr)
 
-        # Database registry !!FALTA SABER EL USERID DE QUIÉN LO MANDA Y A QUIÉN!!
-        snap = Snap()
-        snap.saveSnap(snapName=str(snapName), snapSender=localFiles.getLocalUserInfo()[0], snapFile="\""+str(ImageFunctions.imageToText(snapName)).strip()+"\"", snapReceiver=snapReceiver)
+            # Saving file.png
+            camera.export_to_png(snapName)
 
-        path = os.getcwd()
-        path = path+"/"+snapName
+            # Database registry !!FALTA SABER EL USERID DE QUIÉN LO MANDA Y A QUIÉN!!
+            snap = Snap()
+            snap.saveSnap(snapName=str(snapName), snapSender=localFiles.getLocalUserInfo()[0], snapFile="\""+str(ImageFunctions.imageToText(snapName)).strip()+"\"", snapReceiver=snapReceiver)
 
-        if option == 1:
-            print("NORMAL")
-        elif option == 2:
-            print("GRAYSCALE")
-            ImageFunctions.editar3(path)
-        elif option == 3:
-            print("SEPIA")
-            ImageFunctions.editar2(path)
-        elif option == 4:
-            print("BLUR")
-            ImageFunctions.editar1(path)
+            path = os.getcwd()
+            path = path+"/"+snapName
 
-        ##aqui termina el abrir ventana
+            if option == 1:
+                print("NORMAL")
+            elif option == 2:
+                print("GRAYSCALE")
+                ImageFunctions.editar3(path)
+            elif option == 3:
+                print("SEPIA")
+                ImageFunctions.editar2(path)
+            elif option == 4:
+                print("BLUR")
+                ImageFunctions.editar1(path)
+
+        else:
+            popup = Popup(title='Receptor', content=Label(text='Olvidaste poner el ID del usuario a quien le quieres mandar este snap.'), size_hint=(None, None), size=(550, 200))
+            popup.open()
 
     def checkSnapInbox(self):
         try:
