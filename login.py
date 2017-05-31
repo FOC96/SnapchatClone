@@ -30,12 +30,12 @@ class Login(Screen):
         if val[1] != None:
             a = SnapDB()
             a.getUserData(userID)
-            popup = Popup(title='Hola', content=Label(text='Hola '+localFiles.getLocalUserInfo()[2].split(" ")[0]+', diviértete :)'), size_hint=(None, None), size=(350, 200))
+            popup = Popup(title='Hola', content=Label(text='Hi '+localFiles.getLocalUserInfo()[2].split(" ")[0]+', happy snapchatting!'), size_hint=(None, None), size=(350, 200))
             popup.open()
             self.manager.transition = SlideTransition(direction="left")
             self.manager.current = 'connected'
         else:
-            popup = Popup(title='Error', content=Label(text='Tu contraseña o el usuario no son correctos'), size_hint=(None, None), size=(350, 200))
+            popup = Popup(title='Error', content=Label(text='The password or username are incorrect. Try again.'), size_hint=(None, None), size=(350, 200))
             popup.open()
 
         app = App.get_running_app()

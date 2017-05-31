@@ -28,7 +28,7 @@ class Registrar(Screen):
         a = SnapDB()
 
         if userName == "" or userNickName == "" or userPassword == "":
-            popup = Popup(title='Error', content=Label(text='Hay campos vacíos en el registro.'), size_hint=(None, None), size=(350, 200))
+            popup = Popup(title='Missing fields', content=Label(text='You\'re missing some fields, try again.'), size_hint=(None, None), size=(350, 200))
             popup.open()
         else:
             a.addUser(name=userName, nickName=userNickName, password=userPassword)

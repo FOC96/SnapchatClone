@@ -65,7 +65,7 @@ class Connected(Screen):
                 ImageFunctions.editar1(path)
 
         else:
-            popup = Popup(title='Receptor', content=Label(text='Olvidaste poner el ID del usuario a quien le quieres mandar este snap.'), size_hint=(None, None), size=(550, 200))
+            popup = Popup(title='Oh', content=Label(text='It seems like you forgot to tell who this snap will be sent to (userID).'), size_hint=(None, None), size=(550, 200))
             popup.open()
 
     def checkSnapInbox(self):
@@ -76,7 +76,7 @@ class Connected(Screen):
             idsFound = a.getImageName(localFiles.getLocalUserInfo()[0])[1]
 
             if len(namesFound) == 0:
-                popup = Popup(title='Oops!', content=Label(text='Parece que no tienes snaps nuevos, '+localFiles.getLocalUserInfo()[2].split(" ")[0]), size_hint=(None, None), size=(350, 200))
+                popup = Popup(title='Oops!', content=Label(text='There are no new snaps for you, '+localFiles.getLocalUserInfo()[2].split(" ")[0]), size_hint=(None, None), size=(350, 200))
                 popup.open()
             else:
                 for x in range(len(namesFound)):
